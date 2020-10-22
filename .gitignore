@@ -1,0 +1,17 @@
+.idea
+.gradle
+.cxx
+deps
+
+# Gradle
+build
+local.properties
+
+# CMake
+build-cmake
+cmake-build-debug
+cmake-build-release
+CMakeFiles
+
+
+
