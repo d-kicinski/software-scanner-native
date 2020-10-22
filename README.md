@@ -16,7 +16,16 @@ Currently running this on emulator is not supported so remember to set-up and co
 1. Make sure you have both Android SDK and NDK installed. It is assumed that these could be find in default path suggested by Android Studio.
 Which is `$HOME/Android/Sdk`. Setup `local.properties` file. If you're using Android Studio it will be taken care of.
 
-2. Download OpenCV for Android, unpack it and place its content in `deps/opencv` directory
+2. Install SWIG.
+```bash
+# ubuntu based distro
+sudo apt install swig
+
+# arch based distro
+sudo pacman -Syu swig
+```
+
+3. Download OpenCV for Android, unpack it and place its content in `deps/opencv` directory
 ```bash
 mkdir deps && cd deps
 wget https://github.com/opencv/opencv/releases/download/4.4.0/opencv-4.4.0-android-sdk.zip
@@ -24,7 +33,7 @@ unzip opencv-4.4.0-android-sdk.zip
 mv OpenCV-android-sdk opencv
 ```
 
-3. Compile using this convienece script
+4. Compile using this convienece script
 ```bash
 ./build-native.sh
 ```
