@@ -29,5 +29,5 @@ set(JAVA_NATIVE_PROJECT scanner-jni-${NATIVE_IDENTIFIER})
 set(JAVA_PROJECT scanner-jni)
 
 # Swig wrap all libraries
-add_subdirectory(scanner/java)
+add_subdirectory(scanner-native/java)
 target_link_libraries(jniscanner PRIVATE jniScanner)

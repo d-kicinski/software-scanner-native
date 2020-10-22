@@ -9,9 +9,7 @@
 package com.github.dawidkski.scanner.jni;
 
 public class ScannerJNI {
-    public final static native void drawContour(long jarg1);
-
-    public final static native void softwareScanner(long jarg1, long jarg2);
-
-    public final static native String hello();
+  public final static native void drawContour(long jarg1);
+  public final static native void softwareScanner(long jarg1, long jarg2);
+  public final static native String hello();
 }

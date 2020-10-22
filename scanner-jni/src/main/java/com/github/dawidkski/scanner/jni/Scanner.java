@@ -9,16 +9,16 @@
 package com.github.dawidkski.scanner.jni;
 
 public class Scanner {
-    public static void drawContour(long inputPtr) {
-        ScannerJNI.drawContour(inputPtr);
-    }
+  public static void drawContour(long inputPtr) {
+    ScannerJNI.drawContour(inputPtr);
+  }
 
-    public static void softwareScanner(long inputPtr, long outputPtr) {
-        ScannerJNI.softwareScanner(inputPtr, outputPtr);
-    }
+  public static void softwareScanner(long inputPtr, long outputPtr) {
+    ScannerJNI.softwareScanner(inputPtr, outputPtr);
+  }
 
-    public static String hello() {
-        return ScannerJNI.hello();
-    }
+  public static String hello() {
+    return ScannerJNI.hello();
+  }
 
 }

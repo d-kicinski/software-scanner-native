@@ -56,6 +56,6 @@ foreach (OUTPUTCONFIG IN LISTS CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG} ${CMAKE_BINARY_DIR}/${OUTPUTCONFIG}/${CMAKE_INSTALL_BINDIR})
 endforeach ()
 
-add_subdirectory(scanner)
+add_subdirectory(scanner-native)
 include(java)
 
