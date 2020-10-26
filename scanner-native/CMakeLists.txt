@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 project(libscanner VERSION 1.0.0 LANGUAGES CXX)
 
-## Creating library
+# Import external targets
+find_package(OpenCV)
 
 # Create target and set properties
-add_library(scanner SHARED
-        src/scanner
-        )
+add_library(scanner SHARED src/scanner)
 
 # Add an alias so that library can be used inside the build tree, e.g. when testing
 add_library(Scanner::scanner ALIAS scanner)
@@ -23,65 +22,24 @@ target_include_directories(scanner
 target_compile_features(scanner PRIVATE cxx_auto_type)
 target_compile_options(scanner PRIVATE -Werror)
 
-# Import external targets
-find_package(OpenCV)
-
-# Link dependencies
 target_link_libraries(scanner
         PRIVATE
-        opencv_java
-        )
+        opencv_core
+        opencv_imgproc)
 
-##############################################
-# Installation instructions
-include(GNUInstallDirs)
-set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/Scanner)
+# Tests
+if (HOST)
+    add_subdirectory(libs/Catch2)
+    add_executable(tests
+            tests/test_scanner.cpp)
+    target_link_libraries(tests
+            scanner
+            opencv_imgcodecs
+            opencv_highgui
+            Catch2::Catch2WithMain)
+    include(libs/Catch2/extras/Catch.cmake)
+    enable_testing()
+    catch_discover_tests(tests)
 
-install(TARGETS scanner
-        EXPORT scanner-targets
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        )
-
-# This is required so that the exported target has the name Scanner and not scanner
-set_target_properties(scanner PROPERTIES EXPORT_NAME Scanner)
-
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-# Export the targets to a script
-install(EXPORT scanner-targets
-        FILE
-        ScannerTargets.cmake
-        NAMESPACE
-        Scanner::
-        DESTINATION
-        ${INSTALL_CONFIGDIR}
-        )
-
-# Create a ConfigVersion.cmake file
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-        ${CMAKE_CURRENT_BINARY_DIR}/ScannerConfigVersion.cmake
-        VERSION ${PROJECT_VERSION}
-        COMPATIBILITY AnyNewerVersion
-)
-
-configure_package_config_file(${CMAKE_CURRENT_LIST_DIR}/cmake/ScannerConfig.cmake.in
-        ${CMAKE_CURRENT_BINARY_DIR}/ScannerConfig.cmake
-        INSTALL_DESTINATION ${INSTALL_CONFIGDIR}
-        )
-
-# Install the config, configversion and custom find modules
-install(FILES
-        #${CMAKE_CURRENT_LIST_DIR}/cmake/FindRapidJSON.cmake
-        ${CMAKE_CURRENT_BINARY_DIR}/ScannerConfig.cmake
-        ${CMAKE_CURRENT_BINARY_DIR}/ScannerConfigVersion.cmake
-        DESTINATION ${INSTALL_CONFIGDIR}
-        )
-
-
-## Exporting from the build tree
-export(EXPORT scanner-targets FILE ${CMAKE_CURRENT_BINARY_DIR}/ScannerTargets.cmake NAMESPACE Scanner::)
-
-# Register package in user's package registry
-export(PACKAGE Scanner)
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/tests/resources DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+endif ()

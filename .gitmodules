@@ -1,0 +1,3 @@
+[submodule "scanner-native/libs/Catch2"]
+	path = scanner-native/libs/Catch2
+	url = https://github.com/catchorg/Catch2.git
