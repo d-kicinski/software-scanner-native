@@ -23,9 +23,11 @@ target_compile_features(scanner PRIVATE cxx_auto_type)
 target_compile_options(scanner PRIVATE -Werror)
 
 target_link_libraries(scanner
-        PRIVATE
-        opencv_core
-        opencv_imgproc)
+        PUBLIC
+        ${OpenCV_LIBS}
+#        opencv_core
+#        opencv_imgproc
+        )
 
 # Tests
 if (HOST)

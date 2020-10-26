@@ -5,6 +5,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 option(SWIG "whether use SWIG for building java jni interface" OFF)
 option(ANDROID "whether to build for android (arm64-v8a) platform" OFF)
 option(HOST "whether to build for host platform" ON)
+option(BUILD_SHARED_LIBS "Build shared libraries(.so)." ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 17)
