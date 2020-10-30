@@ -22,14 +22,17 @@ target_include_directories(scanner
 target_compile_features(scanner PRIVATE cxx_auto_type)
 target_compile_options(scanner PRIVATE -Werror)
 
-target_link_libraries(scanner
-        PUBLIC
-        ${OpenCV_LIBS}
-#        opencv_core
-#        opencv_imgproc
-        )
+if(ANDROID)
+    target_link_libraries(scanner
+            PUBLIC
+            opencv_java)
+else()
+    target_link_libraries(scanner
+            PUBLIC
+            opencv_core
+            opencv_imgproc)
+endif()
 
-# Tests
 if (HOST)
     add_subdirectory(libs/Catch2)
     add_executable(tests
