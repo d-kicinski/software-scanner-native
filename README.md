@@ -10,7 +10,6 @@ To sanity-check if bundled .so would work on your device run `connectedAndroidTe
 ```bash
 ./gradlew build cAT
 ```
-Currently running this on emulator is not supported so remember to set-up and connect your device.
 
 ### Compiling native code
 1. Make sure you have both Android SDK and NDK installed. It is assumed that these could be find in default path suggested by Android Studio.
@@ -27,14 +26,11 @@ sudo pacman -Syu swig
 
 3. Download OpenCV for Android, unpack it and place its content in `deps/opencv` directory
 ```bash
-mkdir deps && cd deps
-wget https://github.com/opencv/opencv/releases/download/4.4.0/opencv-4.4.0-android-sdk.zip
-unzip opencv-4.4.0-android-sdk.zip
-mv OpenCV-android-sdk opencv
+./scripts/build-opencv-android.sh
 ```
 
-4. Compile using this convienece script
+4. Compile using this convenience script
 ```bash
-./build-native.sh
+./build-scanner-android.sh
 ```
 Then again run simple test to validate compiled libs with `./gradlew build cAT`
