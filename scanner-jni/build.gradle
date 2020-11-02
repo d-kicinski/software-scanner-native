@@ -39,7 +39,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(":opencv")
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.github.d-kicinski:opencv-android:master-SNAPSHOT'
+
 }

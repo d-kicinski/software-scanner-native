@@ -1,3 +1,2 @@
 rootProject.name = 'software-scanner-native'
-include ':opencv'
 include ':scanner-jni'
