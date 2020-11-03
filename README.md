@@ -31,6 +31,6 @@ sudo pacman -Syu swig
 
 4. Compile using this convenience script
 ```bash
-./build-scanner-android.sh
+./scripts/build-scanner-android.sh
 ```
 Then again run simple test to validate compiled libs with `./gradlew build cAT`
