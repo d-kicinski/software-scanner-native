@@ -28,7 +28,7 @@ rm -r deps/opencv-linux-build
 cmake -Bdeps/opencv-linux-build \
       -DBUILD_LIST=core,imgproc,imgcodecs,highgui \
       -DWITH_EIGEN=OFF \
-      -DBUILD_SHARED_LIBS=OFF \
+      -DBUILD_SHARED_LIBS=ON \
       deps/opencv
 
 cd deps/opencv-linux-build && make -j 12

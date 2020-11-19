@@ -1,5 +1,5 @@
 
-BUILD_DIR=build-cmake/host
+BUILD_DIR=build-cmake-host
 
 rm -r ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}

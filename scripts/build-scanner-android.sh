@@ -3,7 +3,7 @@ export NDK_VERSION=21.3.6528147
 export ANDROID_NDK=${HOME}/Android/Sdk/ndk/${NDK_VERSION}
 export JAVA_PACKAGE_PATH=scanner-jni/src/main/java/com/github/dawidkski/scanner/jni
 
-BUILD_DIR=build-cmake
+BUILD_DIR=build-cmake-android
 rm -rf ${BUILD_DIR}
 
 for platform in arm64-v8a armeabi-v7a x86 x86_64 ; do
