@@ -43,3 +43,16 @@ dependencies {
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }
+
+//  hack to use jitpack
+task downloadZipFile(type: Download) {
+    src 'https://github.com/d-kicinski/software-scanner-native/releases/download/v0.2.1/jniLibs.zip'
+    dest new File(buildDir, 'jniLibs.zip')
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
+    from zipTree(downloadZipFile.dest)
+    into 'src/main/'
+}
+preBuild.dependsOn downloadAndUnzipFile
