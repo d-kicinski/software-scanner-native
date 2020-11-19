@@ -1,4 +1,7 @@
-apply plugin: 'com.android.library'
+plugins {
+    id "de.undercouch.download" version "4.1.1"
+    id 'com.android.library'
+}
 
 android {
     compileSdkVersion 30
