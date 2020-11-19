@@ -1,4 +1,5 @@
 # software-scanner-native
+[![](https://jitpack.io/v/d-kicinski/software-scanner-native.svg)](https://jitpack.io/#d-kicinski/software-scanner-native)
 
 Repository contains simple c++ library that enables user to detect and extract kind-of-rectangular white shapes from images.
 Native code is packaged into android library. For example usage visit https://github.com/dawidkski/software-scanner. :^)
